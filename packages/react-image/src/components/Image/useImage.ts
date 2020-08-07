@@ -1,3 +1,4 @@
+import { useImageAria } from '@fluentui/accessibility';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider';
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -23,6 +24,26 @@ export const useImage = (
   options: ComposePreparedOptions,
 ): ImageState => {
   const imageRef = React.useRef<HTMLElement>(null);
+  const ariaProps = useImageAria(props);
+
+  const handleImageLoad: React.DOMAttributes<HTMLImageElement>['onLoad'] = e => {
+    if (props.onLoad) {
+      props.onLoad(e);
+    }
+
+    if (imageRef.current) {
+      const rect = imageRef.current.getBoundingClientRect();
+      let actualImageSize: 'small' | 'medium' | 'large' = 'small';
+
+      if (rect.width > 80) {
+        actualImageSize = 'large';
+      } else if (rect.width > 32) {
+        actualImageSize = 'medium';
+      }
+
+      imageRef.current.setAttribute('data-image-size', actualImageSize);
+    }
+  };
 
   React.useEffect(() => {
     if (!isFitSupported) {
@@ -31,8 +52,10 @@ export const useImage = (
   }, []);
 
   return {
+    ...ariaProps,
     ...props,
     imageRef,
+    onLoad: handleImageLoad,
     style: getStyleFromPropsAndOptions(props, options, '--image'),
   };
 };

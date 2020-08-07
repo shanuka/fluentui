@@ -15,6 +15,12 @@ export const imageBehavior: Accessibility<ImageBehaviorProps> = props => ({
   },
 });
 
+export function useImageAria(props: ImageBehaviorProps): AccessibilityAttributes {
+  return {
+    'aria-hidden': props.alt || props['aria-label'] ? undefined : 'true',
+  };
+}
+
 export type ImageBehaviorProps = {
   /** Alternative text. */
   alt?: string;
