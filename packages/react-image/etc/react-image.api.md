@@ -37,8 +37,6 @@ export interface ImageSlots extends BaseSlots {
 // @public (undocumented)
 export interface ImageState extends ImageProps {
     // (undocumented)
-    'aria-hidden'?: React.AriaAttributes['aria-hidden'];
-    // (undocumented)
     imageRef: React.RefObject<HTMLElement>;
 }
 

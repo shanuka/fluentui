@@ -25,7 +25,6 @@ export interface ImageProps extends ComponentProps, React.ImgHTMLAttributes<HTML
 }
 
 export interface ImageState extends ImageProps {
-  'aria-hidden'?: React.AriaAttributes['aria-hidden'];
   imageRef: React.RefObject<HTMLElement>;
 }
 
