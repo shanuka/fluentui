@@ -21,11 +21,12 @@ import * as React from 'react';
 import { NavLink, NavLinkProps, withRouter, RouteComponentProps } from 'react-router-dom';
 import { SearchIcon, TriangleDownIcon, TriangleUpIcon, FilesTxtIcon, EditIcon } from '@fluentui/react-icons-northstar';
 import config from '../../config';
+import componentInfoContext from '../../utils/componentInfoContext';
 
 type ComponentMenuItem = { displayName: string; type: string };
 
 const pkg = require('@fluentui/react-northstar/package.json');
-const componentMenu: ComponentMenuItem[] = require('../../componentMenu');
+const componentMenu: ComponentMenuItem[] = componentInfoContext.parents;
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
 const componentsBlackList = ['Debug', 'Design', 'Datepicker'];

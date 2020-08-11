@@ -35,9 +35,12 @@
     "access": "public"
   },
   "repository": "microsoft/fluentui.git",
+  "gulp": {
+    "componentInfo": "./src/[A-Z]*.tsx"
+  },
   "scripts": {
-    "build": "gulp bundle:package:no-umd",
-    "clean": "gulp bundle:package:clean",
+    "build": "gulp build:component-info bundle:package:no-umd",
+    "clean": "gulp clean:component-info bundle:package:clean",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "test": "gulp test",
