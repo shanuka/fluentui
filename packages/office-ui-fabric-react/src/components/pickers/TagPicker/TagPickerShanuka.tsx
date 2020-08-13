@@ -22,7 +22,7 @@ export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
   }
 }
 
-export const TagPicker = styled<ITagPickerProps, IBasePickerStyleProps, IBasePickerStyles>(
+export const TagPickerShanuka = styled<ITagPickerProps, IBasePickerStyleProps, IBasePickerStyles>(
   TagPickerBase,
   getStyles,
   undefined,
